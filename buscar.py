@@ -8,7 +8,8 @@ def buscar_parecidos(nombre_archivo, ruta_carpeta):
         for archivo in archivos:
             archivo_filtro = archivo.lower()
             # Buscamos que sean extensión de karaoke .cdg y no mp3
-            if archivo_filtro.endswith(".cdg") and nombre_archivo in archivo_filtro:
+            # if /*archivo_filtro.endswith(".cdg") annombre_archivo in archivo_filtro:
+            if nombre_archivo in archivo_filtro:
                 ruta_completa = os.path.join(ruta_actual, archivo)
                 archivos_parecidos.append(ruta_completa)
 
@@ -21,10 +22,10 @@ def recortar_ultima_carpeta(ruta):
 
 
 # Defino la ruta que voy a buscar
-ruta_carpeta_buscar = "D:\Canciones"
+ruta_carpeta_buscar = "D:\Scaph\Documentos"
 
 #Inicio del programa
-print("Bienvenida al buscador de canciones hecha por Pepe :D")
+print("Bienvenida al buscador de canciones hecha por Pepe y July :D")  
 input_nombre_archivo_buscar = input("Ingrese el nombre del archivo a buscar por favor:")
 # Quitamos los espacios iniciales y finales
 limpiar_input_espacios = input_nombre_archivo_buscar.strip()
@@ -56,12 +57,12 @@ if nombre_archivo_buscar is not None:
     # Finalmente abrimos el archivo
     input("Presione enter para abrir la carpeta")
     ruta_recortada = recortar_ultima_carpeta(nombre_archivo_buscar_individual)
-    try:
-        subprocess.run(['explorer', ruta_recortada], check=True)
-    except subprocess.CalledProcessError as e:
-        print("")   
+    os.startfile(nombre_archivo_buscar_individual)    
+    # try:
+        # subprocess.run(['explorer', ruta_recortada], check=True)
+    # except subprocess.CalledProcessError as e:
+        # print("")   
         # print(f"No se pudo abrir la carpeta: {e}")
-    # input("Listo, presione enter para cerrar el buscador :)")
 else:
     print("No se encontraron carpetas con ese nombre. :(")
     input("Presione enter para cerrar") 
